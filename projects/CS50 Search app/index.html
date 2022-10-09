@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="search" autocomplete="off" autofocus placeholder="Search title">
+
+    <ul></ul>
+
+    <!-- This needs data from a database -->
+
+    <script>
+
+        let input = document.querySelector('input');
+        input.addEventListener('input', async () => {
+            let response = await fetch(`/search?q=${input.value}`);
+            let shows = await response.json();
+            let html = '';
+            for (let id in shows) {
+                let title = shows[id].title.replace('<', '&lt;').replace('&', '&lt')
+                html += `<li>${title}</li>`;
+            }
+            document.querySelector('ul').innerHTML = html;
+        });
+
+    </script>
+
+</body>
+</html>

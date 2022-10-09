@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RGB</title>
+</head>
+<body>
+    <button id="1">R</button>
+    <button id="2">G</button>
+    <button id="3">B</button>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    let body = $('body');
+    $('#1').click(() => body.style.backgroundColor = '#ff0000');
+    $('#2').click(() => body.style.backgroundColor = '#00ff00');
+    $('#3').click(() => body.style.backgroundColor = '#0000ff');
+</script>
+</html>

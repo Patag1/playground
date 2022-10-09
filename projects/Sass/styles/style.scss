@@ -1,0 +1,48 @@
+
+// import modules
+@import './variables';
+@import './footer';
+
+body {
+    
+    @include flexbox(column);
+    font-family: sans-serif;
+
+    // nesting
+    div {
+        @include flexbox(column);
+        background: $div;
+        text-align: center;
+        width: 500px;
+        padding: 40px;
+        border-radius: 15px;
+    }
+
+    h1 {
+        color: $header;
+    }
+
+    p {
+        color: $p;
+        font-size: medium;
+        padding: 5px;
+    }
+
+    button {
+        background: $button;
+        color: $header;
+        border: 2px solid $header;
+        padding: 10px;
+        border-radius: 8px;
+        font-size: medium;
+        transition: 0.3s;
+        &:hover {
+            background: $header;
+            border-color: $button;
+            color: $button;
+        }
+    }
+}
+
+// We can also use @extend to inherit all given styles from another tag
+// We can +, -, *, / to whatever style with numeric value

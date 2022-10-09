@@ -1,0 +1,13 @@
+// style variables
+$header : #ffffff;
+$p : #e4e4e4;
+$button : #131313;
+$div : #09f;
+
+// mixin = function for styles
+@mixin flexbox($direction) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}

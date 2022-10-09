@@ -1,0 +1,44 @@
+h3 {
+  color: #131313;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: sans-serif;
+}
+body div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #09f;
+  text-align: center;
+  width: 500px;
+  padding: 40px;
+  border-radius: 15px;
+}
+body h1 {
+  color: #ffffff;
+}
+body p {
+  color: #e4e4e4;
+  font-size: medium;
+  padding: 5px;
+}
+body button {
+  background: #131313;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: medium;
+  transition: 0.3s;
+}
+body button:hover {
+  background: #ffffff;
+  border-color: #131313;
+  color: #131313;
+}/*# sourceMappingURL=style.css.map */
