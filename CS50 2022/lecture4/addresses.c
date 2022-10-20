@@ -22,5 +22,9 @@ int main(void)
     printf("%c\n", *s);     // prints whatever char is at *s
     printf("%c\n", *(s+1));
     printf("%c\n", *(s+2));
-    printf("%c\n", *(s+3));
+    printf("%c\n", *(s+3)); // if we go beyond the string's limit, we might cause a segmentation fault
+
+    printf("%c\n", s);     // prints FROM s onward ("HI!")
+    printf("%c\n", s+1);   // "I!"
+    printf("%c\n", s+2);   // "!"
 }
