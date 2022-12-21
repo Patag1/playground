@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Blink</title>
+    </head>
+    <body>
+        This is CS50
+    </body>
+    <script>
+
+        function blink() {
+            let body = document.querySelector('body');
+            body.style.visibility = 'hidden' ? body.style.visibility = 'visible' : body.style.visibility = 'hidden';
+        }
+
+        window.setInterval(blink, 500);
+
+    </script>
+</html>
