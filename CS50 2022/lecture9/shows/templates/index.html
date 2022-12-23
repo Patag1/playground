@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>shows</title>
+    </head>
+    <body>
+
+        <input type="search" autofocus autocomplete="off" name="q" required>
+        
+        <ul></ul>
+
+    </body>
+    <script>
+
+        let input = document.querySelector('input');
+        input.addEventListener('input', async () => {
+            let response = await fetch('/search?q=' + input.value);
+            let shows = await response.json();
+            let html = '';
+            for (let id in shows) {
+                let title = shows[id].title.replace('<', '&lt;').replace('&', '&amp;')
+                html += `<li>${title}</li>`;
+            }
+            document.querySelector('ul').innerHTML = shows;
+        });
+        
+    </script>
+</html>

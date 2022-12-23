@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+    <h1>Registrants</h1>
+    <hr>
+    <ul>
+        {% for person in registrants %}
+            <li>
+                {{ person.name }}: {{ person.sport }}
+                <form action="/deregister" method="post">
+                    <input type="hidden" name="id" value="{{ id }}">
+                    <input type="submit" value="Deregister">
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
