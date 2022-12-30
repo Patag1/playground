@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+
+    Login
+
+{% endblock %}
+
+{% block main %}
+
+    <h1>{{ msg[0] }}</h1>
+    <p>{{ msg[1] }}</p>
+
+    <hr>
+
+    <div class="mb-3 secret">
+        <form action="/login" method="post">
+            <input autofocus placeholder="Username" required type="text" autocomplete="off" name="username" class="form-control" id="exampleFormControlInput1">
+            <br>
+            <input type="password" name="password" placeholder="Password" autocomplete="off" required class="form-control" id="exampleFormControlInput1">
+            <br>
+            <button type="submit" class="btn btn-success">Log in</button>
+        </form>
+    </div>
+
+    <hr>
+
+{% endblock %}

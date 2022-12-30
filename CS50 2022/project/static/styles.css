@@ -1,0 +1,39 @@
+#logo {
+    margin-left: 20px;
+    margin-bottom: -3px;
+}
+
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-container {
+    max-width: 300px;
+}
+
+input {
+    max-width: 250px;
+}
+
+select {
+    max-width: 250px;
+}
+
+#task {
+    max-width: 100px;
+}
+
+.task-rm {
+    max-width: 200px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+textarea {
+    height: 100px;
+    max-width: 350px;
+}
+

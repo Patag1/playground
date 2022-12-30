@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+
+    To do
+
+{% endblock %}
+
+{% block main %}
+
+    <h1>{{ msg[0] }}</h1>
+    <p>{{ msg[1] }}</p>
+
+    <hr>
+
+    <form action="/todo" method="post" class="mb-3">
+        <input type="text" name="title" placeholder="Title" autofocus required class="form-control" id="exampleFormControlInput1">
+        <br>
+        <textarea name="desc" placeholder="Description" required class="form-control" id="exampleFormControlTextarea1"></textarea>
+        <br>
+        <input type="text" name="time" placeholder="Deadline" autocomplete="off" required class="form-control" id="exampleFormControlInput1">
+        <br>
+        <input type="hidden" name="add" value="1">
+        <button type="submit" class="btn btn-success">Add</button>
+    </form>
+
+    <hr>
+
+    <table class="table table-dark table-striped">
+
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Deadline</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for task in tasks %}
+
+                <tr>
+                    <td>{{ task.title }}</td>
+                    <td>{{ task.description }}</td>
+                    <td>{{ task.time }}</td>
+                </tr>
+
+            {% endfor %}
+
+            <tr>
+                <td>
+                    <form action="/todo" method="post">
+                        <div class="task-rm">
+                            <select name="task" class="form-select" id="task">
+                                <option selected disabled>Task</option>
+
+                                {% for task in tasks %}
+
+                                    <option>{{ task.title }}</option>
+
+                                {% endfor %}
+
+                            </select>
+                            <input type="hidden" name="remove" value="1">
+                            <button type="submit" class="btn btn-danger">Remove</button>
+                        </div>
+                    </form>
+                </td>
+                <td> </td>
+                <td>
+                    <form action="/todo" method="post">
+                        <input type="hidden" name="clear" value="1">
+                        <button type="submit" class="btn btn-danger">Clear all</button>
+                    </form>
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+{% endblock %}

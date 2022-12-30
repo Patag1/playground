@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+
+    To do
+
+{% endblock %}
+
+{% block main %}
+
+    <h1>{{ msg[0] }}</h1>
+    <p>{{ msg[1] }}</p>
+
+    <hr>
+
+    <form action="/fitness" method="post" class="mb-3">
+        <input type="number" name="weight" placeholder="Current weight" min="1" autofocus required class="form-control" id="exampleFormControlInput1">
+        <br>
+        <select name="system" required class="form-select">
+            <option selected disabled>System of unit</option>
+            <option>Metric</option>
+            <option>Imperial</option>
+        </select>
+        <br>
+        <input name="height" placeholder="Height" required class="form-control" min="1" id="exampleFormControlTextarea1">
+        <br>
+        <input type="hidden" name="new" value="1">
+        <button type="submit" class="btn btn-success">Accept</button>
+    </form>
+
+    {% if no_data %}
+
+        <p>Please, fill in the form and your data will be displayed</p>
+
+        <hr>
+
+    {% else %}
+
+        <p>{{ disclaimer }}</p>
+
+        <br>
+
+        <div class="card text-bg-dark mb-3">
+            <div class="card-header">Body Mass Index (BMI)</div>
+            <div class="card-body">
+                <h4 class="card-title">{{ bmi }}</h4>
+                <p class="card-text"><strong>Knowing your BMI can help you - and your GP - determine any health risks you may face if it's outside of the healthy range.</strong> Important to notice that BMI does not take into consideration gender, ethnicity, body fat, conditions, among other variables that may discredit this index's validity.</p>
+                <p>{{ message }}</p>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="card text-bg-dark mb-3">
+            <div class="card-header">Adviced weight</div>
+            <div class="card-body">
+                <h4 class="card-title">{{ weight }}Kg or {{ decimal(weight*2.2) }}lb</h4>
+                <p class="card-text"><strong>When your weight is in a healthy range</strong> your body more efficiently circulates blood, fluid levels are more easily managed, you are less likely to develop weight related diseases, you may feel having more energy to make other positive health changes.</p>
+                <p class="card-text">Like described previously, this estimate is not perfect. Any weight in the vecinity of this result is considered healthy</p>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="card text-bg-dark mb-3">
+            <div class="card-header">Water consumption/day</div>
+            <div class="card-body">
+                <h4 class="card-title">{{ water }}L or {{ decimal(water*3.78) }}gal</h4>
+                <p class="card-text"><strong>Getting enough water every day is important for your health.</strong> Drinking water can prevent dehydration, a condition that can cause unclear thinking, result in mood change, cause your body to overheat, and lead to various other diseases.</p>
+                <p class="card-text">Water consumption could be altered by the individual's physical activity, local climate, as well as other variables</p>
+            </div>
+        </div>
+
+        <hr>
+
+    {% endif %}
+
+{% endblock %}

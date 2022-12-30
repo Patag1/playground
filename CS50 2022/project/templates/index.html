@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+
+    Home
+
+{% endblock %}
+
+{% block main %}
+
+    <h1>Welcome to your homepage</h1>
+    <p>Here is a quick summary of all of your data combined in a single page.</p>
+
+    <hr>
+
+    <div class="main-container">
+
+        <div class="card-container">
+
+            <div class="card text-bg-dark mb-3">
+                <div class="card-header">Total balance</div>
+                <div class="card-body">
+
+                    {% if income %}
+
+                        <p class="card-text">{{ usd(income) }}</p>
+
+                    {% else %}
+
+                        <p>{{ usd(0) }}</p>
+
+                    {% endif %}
+
+                </div>
+            </div>
+
+            <br>
+
+            <div class="card text-bg-dark mb-3">
+                <div class="card-header">Tasks</div>
+                <div class="card-body">
+
+                    {% if tasks > 0 %}
+
+                        <p class="card-text">Check out your to do list for {{ tasks }} undone tasks</p>
+
+                    {% else %}
+
+                        <p class="card-text">Go to your to do list to add on tasks</p>
+
+                    {% endif %}
+
+                </div>
+            </div>
+
+            <br>
+
+            <div class="card text-bg-dark mb-3">
+                <div class="card-header">BMI</div>
+                <div class="card-body">
+
+                    {% if bmi %}
+
+                        <p class="card-text">{{ bmi }}</p>
+
+                    {% else %}
+
+                        <p class="card-text">No info yet, head to Fitness to set up your data</p>
+
+                    {% endif %}
+
+                </div>
+            </div>
+
+        </div>
+
+        <img src="/static/index.jpg" alt="Home img" height="350">
+
+    </div>
+
+    <hr>
+
+{% endblock %}

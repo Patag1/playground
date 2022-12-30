@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+
+    Register
+
+{% endblock %}
+
+{% block main %}
+
+    <h1>{{ msg[0] }}</h1>
+    <p>{{ msg[1] }}</p>
+    <hr>
+
+    <form action="/register" method="post" class="mb-3">
+        <div>
+            <input autofocus placeholder="Username" required type="text" autocomplete="off" name="username" class="form-control" id="exampleFormControlInput1">
+            <br>
+            <input type="password" name="password" placeholder="Password" autocomplete="off" required class="form-control" id="exampleFormControlInput1">
+            <br>
+            <input type="password" name="confirm" placeholder="Confirm password" autocomplete="off" required class="form-control" id="exampleFormControlInput1">
+            <br>
+            <input type="number" name="year" placeholder="Year of birth" autocomplete="off" required class="form-control" id="exampleFormControlInput1">
+            <br>
+            <input type="number" name="month" placeholder="Month of birth" autocomplete="off" required class="form-control" id="exampleFormControlInput1">
+            <br>
+            <input type="number" name="day" placeholder="Day of birth" autocomplete="off" required class="form-control" id="exampleFormControlInput1">
+            <br>
+        </div>
+        <button type="submit" class="btn btn-success">Register</button>
+    </form>
+
+{% endblock %}

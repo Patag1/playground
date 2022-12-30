@@ -1,0 +1,105 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+
+    Balance
+
+{% endblock %}
+
+{% block main %}
+
+    <h1>{{ msg[0] }}</h1>
+    <p>{{ msg[1] }}</p>
+
+    <hr>
+
+    <form action="/balance" method="post" class="mb-3">
+        <input type="text" name="desc" placeholder="Description" autofocus required class="form-control" id="exampleFormControlInput1">
+        <br>
+        <select name="type" required class="form-select">
+            <option selected disabled>Balance operation</option>
+            <option>Add</option>
+            <option>Retract</option>
+        </select>
+        <br>
+        <input type="number" name="amnt" placeholder="Amount" min="1" required class="form-control" id="exampleFormControlInput1">
+        <br>
+        <input type="hidden" name="add" value="1">
+        <button type="submit"class="btn btn-success">Accept</button>
+    </form>
+
+    <hr>
+
+    <table class="table table-dark table-striped">
+
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% if no_ops %}
+
+                <tr>
+                    <td>No expenses yet</td>
+                    <td> </td>
+                    <td> </td>
+                </tr>
+
+            {% else %}
+
+                {% for operation in operations %}
+
+                    <tr>
+                        <td>{{ operation.name }}</td>
+                        <td>{{ usd(operation.amount) }}</td>
+                        <td>{{ operation.Timestamp }}</td>
+                    </tr>
+
+                {% endfor %}
+
+            {% endif %}
+
+            <tr>
+                <th>Total balance</th>
+
+                {% if no_income %}
+
+                    <th>{{ usd(0) }}</th>
+
+                {% else %}
+
+                    <th>{{ usd(balance) }}</th>
+
+                {% endif %}
+
+                <td>
+                    <form action="/balance" method="post">
+                        <input type="hidden" name="clear" value="1">
+                        <button type="submit" class="btn btn-danger">Clear operations</button>
+                    </form>
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <hr>
+
+    <h4>Set your income</h4>
+    <p>Set your job monthly income to calculate your balance</p>
+
+    <hr>
+
+    <form action="/balance" method="post" class="mb-3">
+        <input type="number" name="income" placeholder="Amount" required min="1" class="form-control" id="exampleFormControlInput1">
+        <br>
+        <button type="submit"class="btn btn-success">Accept</button>
+    </form>
+
+{% endblock %}
